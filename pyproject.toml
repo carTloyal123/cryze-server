@@ -1,0 +1,22 @@
+[project]
+name = "cryze-server"
+description = "The websocket server that manages data flow for Cryze Android and the Cryze project."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GPL-3.0",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/carTloyal123/cryze-server"
+Issues = "https://github.com/carTloyal123/cryze-server/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/cryze_server/__init__.py"
