@@ -13,14 +13,35 @@ requires-python = ">=3.11"
 keywords = ["wyze", "video", "camera", "websocket", "server", "cryze"]
 license = {text = "GPL-3.0-or-later"}
 classifiers = [
-    "Programming Language :: Python :: 3",
+  "Development Status :: 3 - Alpha",
 
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: MIT License",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
 ]
 dependencies = [
     "websockets",
-    'importlib-metadata; python_version<"3.10"',
 ]
-dynamic = ["version"]
+dynamic = ["version", "readme"]
+
+[project.urls]
+Repository = "https://github.com/carTloyal123/cryze-server.git"
+Issues = "https://github.com/carTloyal123/cryze-server/issues"
+Changelog = "https://github.com/carTloyal123/cryze-server/blob/main/CHANGELOG.md"
+
+[tool.setuptools.dynamic]
+version = {attr = "cryze_server.VERSION"}
+readme = {file = "README.md", content-type = "text/markdown"}
 
 [project.scripts]
 basic_server = "cryze_server.server:create_demo_server"
