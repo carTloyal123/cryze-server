@@ -8,7 +8,6 @@ authors = [
     {name = "Carson Loyal", email = "carsonloyal123@me.com"},
 ]
 description = "A python websocket server for the Cryze project."
-readme = "README.rst"
 requires-python = ">=3.11"
 keywords = ["wyze", "video", "camera", "websocket", "server", "cryze"]
 license = {text = "GPL-3.0-or-later"}
