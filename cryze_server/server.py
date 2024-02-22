@@ -4,12 +4,18 @@ import json
 
 class CryzeWebsocketServer:
     def __init__(self):
+        """
+        Initialize the server
+        """
         self.max_size = 2**30  # 1GB
         self.server = None
         self.connected = set()
         self.subscriptions = {}  # New: Dictionary to manage subscriptions
 
     async def handle_subscription(self, message, websocket):
+        """"
+        This function handles the subscription and unsubscription messages.
+        """
         try:
             data = json.loads(message)
             if data['type'] == 'Subscribe':
@@ -27,6 +33,10 @@ class CryzeWebsocketServer:
             pass  # Ignore non-JSON messages or bad format
 
     async def echo(self, websocket):
+        """
+        This function handles the echo loop for the server which is the main loop.
+        :param websocket: The websocket object
+        """
         async for message in websocket:
             try:
                 if isinstance(message, bytes):
@@ -45,7 +55,13 @@ class CryzeWebsocketServer:
                 print("Error in echo: " + str(e))
 
     async def broadcast(self,websocket, message, topic=None, is_binary=False):
-        # Broadcast to all clients subscribed to the relevant topic
+        """
+        This function broadcasts a message to all clients subscribed to a topic
+        :param websocket: The websocket object
+        :param message: The message to broadcast
+        :param topic: The topic to broadcast to
+        :param is_binary: Whether the message is binary or not
+        """
         try:
             if topic in self.subscriptions:
                 subscribers = self.subscriptions[topic]
@@ -65,10 +81,20 @@ class CryzeWebsocketServer:
             print("Error in broadcast: " + str(e))
 
     async def on_connect(self, websocket, path):
+        """
+        This function is called when a new client connects to the server
+        :param websocket: The websocket object
+        :param path: The path of the connection
+        """
         print(f"New connection: {path}")
         self.connected.add(websocket)
 
     async def on_disconnect(self, websocket, path):
+        """
+        This function is called when a client disconnects from the server
+        :param websocket: The websocket object
+        :param path: The path of the connection
+        """
         print(f"Disconnected: {path}")
         self.connected.remove(websocket)
         # Remove from all subscriptions
@@ -76,6 +102,11 @@ class CryzeWebsocketServer:
             subscribers.discard(websocket)
 
     async def handler(self, websocket, path):
+        """
+        This function is called when a new client connects to the server
+        :param websocket: The websocket object
+        :param path: The path of the connection
+        """
         try:
             await self.on_connect(websocket, path)
             await self.echo(websocket)
@@ -85,6 +116,11 @@ class CryzeWebsocketServer:
             await self.on_disconnect(websocket, path)
 
     def start(self, url='0.0.0.0', port=3030):
+        """
+        Start the server
+        :param url: The IP address to listen on
+        :param port: The port to listen on
+        """
         self.server = websockets.serve(self.handler, url, port, max_size=None, max_queue=5)
         print("Running server! with max size: " + str(self.max_size) + " bytes")
         asyncio.get_event_loop().run_until_complete(self.server)
