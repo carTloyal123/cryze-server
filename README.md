@@ -1,6 +1,8 @@
-![Cryze Logo](docs/CryzeLogo.png)
-
 # Heavy WIP as of Feb 2024
+## Cryze Server
+Cryze Server is a server that allows you to stream your Gwell based Wyze cams to locations of your choosing. It is the partner project to Cryze Android and falls under the Cryze project. For more information on how to setup an entire system please see the [Cryze](https://github.com/carTloyal123/Cryze) project.
+
+![Cryze Logo](docs/CryzeLogo.png)
 
 # Cryze
 Cryze is a Wyze Gwell Camera Bridge that allows you to stream your Gwell based Wyze cams to locations of your choosing.
