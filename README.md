@@ -1,5 +1,7 @@
 ![Cryze Logo](docs/CryzeLogo.png)
 
+# Heavy WIP as of Feb 2024
+
 # Cryze
 Cryze is a Wyze Gwell Camera Bridge that allows you to stream your Gwell based Wyze cams to locations of your choosing.
 
