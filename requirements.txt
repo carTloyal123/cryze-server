@@ -1,0 +1,2 @@
+setuptools==65.5.0
+websockets==12.0

@@ -1,0 +1,21 @@
+version: "4"
+
+networks:
+  android_server_network:
+    driver: bridge
+
+services:
+# Launch emulator and appium instance
+  cryze-server-service:
+    image: cryze-websocket-server
+    build: 
+      context: ../
+      dockerfile: docker/Dockerfile
+    ports:
+      - 3030:3030
+    container_name: cryze_websocket_container
+    privileged: true
+    tty: true
+    stdin_open: true
+    networks:
+      - android_server_network
