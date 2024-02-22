@@ -7,7 +7,6 @@ setup(
     #can list down each package names - no need to keep __init__.py under packages / directories
     packages=['cryze_server'], #importing is like: from package1 import mod2, or import package1.mod2 as m2
 
-    scripts=['scripts/run_cryze_server.py'],
     license='GPLv3',
 
     classifiers=[
