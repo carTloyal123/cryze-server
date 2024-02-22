@@ -1,6 +1,6 @@
 [project]
 name = "cryze_server"
-version = "0.0.17"
+version = "0.0.18"
 description = "Cryze Websocket server that coordinates the Cryze-Android app and the outside world."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -10,7 +10,6 @@ dependencies = [
   "websockets",
   "asyncio"
 ]
-
 
 [build-system]
 requires = ["setuptools", "wheel"]
@@ -31,6 +30,3 @@ asyncio = "^3.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
-
-[tool.poetry.scripts]
-cryze_server = "scripts.run_cryze_server:main"

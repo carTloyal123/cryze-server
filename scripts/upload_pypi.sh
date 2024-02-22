@@ -17,8 +17,10 @@ echo "Current version: $current_version"
 # bump version
 bump2version --allow-dirty --current-version $current_version patch $toml_file
 
+echo "Building Package"
 # Build the package
 python setup.py sdist bdist_wheel
 
+echo "Uploading to PyPi"
 # Upload to PyPi
 twine upload dist/*
